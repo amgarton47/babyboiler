@@ -1,0 +1,19 @@
+{
+  "name": "babyboiler",
+  "version": "1.0.0",
+  "description": "starter code for any web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amgarton47/babyboiler.git"
+  },
+  "author": "Aidan Garton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amgarton47/babyboiler/issues"
+  },
+  "homepage": "https://github.com/amgarton47/babyboiler#readme"
+}
