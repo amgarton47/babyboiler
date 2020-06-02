@@ -4,11 +4,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 
+const PORT = process.env.PORT || 3000;
+const db = require("./db");
+
 // serve up static files
 app.use(express.static(path.join(__dirname, "../public")));
 
 // logging middleware
-const morgan = require("morgan");
 app.use(morgan("dev"));
 
 // body parsing middleware
@@ -30,8 +32,21 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
-// start server
-const port = process.env.PORT || 3000;
-app.listen(port, function () {
-  console.log(`Server is up and running -- listening on port ${port}`);
-});
+// sync db
+const syncDb = () => db.sync();
+
+// start listening
+const startListening = () => {
+  app.listen(PORT, function () {
+    console.log(`Server is up and running -- listening on port ${PORT}`);
+    console.log(`http://localhost:${PORT}/`);
+  });
+};
+
+async function startApp() {
+  syncDb();
+  startListening();
+}
+
+// set everything in motion ... ;)
+startApp();
