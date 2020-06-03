@@ -26,6 +26,9 @@ const User = db.define("user", {
       return () => this.getDataValue("salt");
     },
   },
+  googleId: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = User;
