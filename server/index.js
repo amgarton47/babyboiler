@@ -36,8 +36,9 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// matches all requests to /api
+// auth and api routes
 app.use("/api", require("./api"));
+app.use("/auth", require("./auth"));
 
 // session middleware
 app.use(
